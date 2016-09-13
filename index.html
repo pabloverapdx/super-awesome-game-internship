@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css" media="screen" title="no title">
+    <script src="jquery.js"></script>
+    <script type="text/javascript">
+
+    $( document ).ready(function() {
+      var ship = $(".ship")
+      var left = 0
+
+      // [ id, x, y ]
+      var code_bullets = []
+
+      num_bullets = 0
+
+      moveShip = function() {
+        ship.attr("style", "left: " + left + "px;")
+        console.log("moving" + left)
+      }
+
+      moveBullets = function() {
+        new_bullets = []
+
+        for( b = 0; b < code_bullets.length ; b++ ) {
+          cb_id = code_bullets[b][0]
+          cb_left = code_bullets[b][1] + Math.random() * 5 - Math.random() * 5;
+          cb_bottom = code_bullets[b][2] + 5 // MOVE THE BULLET UP BY ... 5?!
+
+          bullet = $('.bullet#' + cb_id)
+
+          if( cb_bottom < 600 ) {
+            new_bullets.push([cb_id, cb_left, cb_bottom])
+          }
+          else {
+            $(bullet).remove();
+          }
+
+          style_string = "left: " + cb_left + "px; bottom: " + cb_bottom + "px;"
+          $(bullet).attr("style", style_string)
+        }
+
+        code_bullets = new_bullets
+      }
+
+      setInterval( function() { moveShip(); moveBullets() }, 10);
+
+      $("body").keypress( function(){
+        // if ( event.which == 13 ) {
+        //   event.preventDefault();
+        // }
+
+        key = event.which;
+
+        console.log(event.which);
+        console.log(left)
+
+        if( key == 100 ) {
+          left = left + 15;
+        }
+        if( key == 97 ) {
+          left = left - 15;
+        }
+        if( key == 32 ) {
+          id = num_bullets + 1
+          num_bullets = id
+          $(".game").append("<div id='" + id + "' class='bullet' style='left:" + (left) + "px; bottom: 5px;'></div>");
+          code_bullets.push([id, left, 5 ])
+
+          id = num_bullets + 1
+          num_bullets = id
+          $(".game").append("<div id='" + id + "' class='bullet' style='left:" + (left+30) + "px; bottom: 5px;'></div>");
+          code_bullets.push([id, left+30, 5 ])
+
+        }
+      })
+
+
+    });
+
+    </script>
+
+    <title>Scrabble Shooter</title>
+  </head>
+  <body>
+    <div class="game">
+      <div class="bullets">
+      </div>
+      <div class="ship">
+      </div>
+    </div>
+    <div class="score">
+
+    </div>
+  </body>
+</html>

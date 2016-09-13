@@ -1,0 +1,33 @@
+.game {
+  float: left;
+  border: 1px solid red;
+  width: 70%;
+  height: 500px;
+  position: relative;
+}
+
+.score {
+  float: right;
+  border: 1px solid green;
+  width: 29%;
+  height: 500px;
+}
+
+.ship {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid transparent;
+  border-bottom: 20px black solid;
+  position: absolute;
+  bottom: 5px;
+}
+
+.bullet {
+  background-color: red;
+  height: 10px;
+  width: 10px;
+  border: 1px solid yellow;
+  position: absolute;
+}
