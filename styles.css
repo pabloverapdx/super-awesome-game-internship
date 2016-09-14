@@ -2,7 +2,7 @@
   float: left;
   border: 1px solid red;
   width: 70%;
-  height: 500px;
+  height: 400px;
   position: relative;
 }
 
@@ -10,7 +10,9 @@
   float: right;
   border: 1px solid green;
   width: 29%;
-  height: 500px;
+  height: 400px;
+  text-align: center;
+  line-height: 400px;
 }
 
 .ship {
@@ -30,4 +32,12 @@
   width: 10px;
   border: 1px solid yellow;
   position: absolute;
+}
+
+.instructions {
+  border: 1px solid magenta;
+  display: block;
+  height: 10%;
+  width: 100%;
+  clear: both;
 }
